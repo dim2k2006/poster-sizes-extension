@@ -6,21 +6,22 @@
     "node": "12.16.0"
   },
   "devDependencies": {
-    "@contentful/contentful-extension-scripts": "0.16.0",
-    "@contentful/eslint-config-extension": "0.3.1",
     "@babel/core": "7.3.4",
     "@babel/plugin-proposal-class-properties": "7.3.4",
     "@babel/plugin-transform-runtime": "7.3.4",
     "@babel/preset-env": "7.3.4",
     "@babel/preset-react": "7.0.0",
+    "@contentful/contentful-extension-scripts": "0.16.0",
+    "@contentful/eslint-config-extension": "0.3.1",
     "@testing-library/react": "8.0.4",
-    "cssnano": "4.1.10",
     "contentful-cli": "0.33.2",
-    "eslint": "^6.0.1"
+    "cssnano": "4.1.10",
+    "eslint": "^6.0.1",
+    "gh-pages": "^3.1.0"
   },
   "scripts": {
     "start": "contentful-extension-scripts start",
-    "build": "contentful-extension-scripts build",
+    "build": "contentful-extension-scripts build --no-inline",
     "lint": "eslint ./ --ext .js,.jsx,.ts,.tsx",
     "test": "contentful-extension-scripts test --env=jsdom --watch",
     "test:coverage": "contentful-extension-scripts test --env=jsdom --coverage",
@@ -28,7 +29,8 @@
     "configure": "contentful space use && contentful space environment use",
     "login": "contentful login",
     "logout": "contentful logout",
-    "help": "contentful-extension-scripts help"
+    "help": "contentful-extension-scripts help",
+    "deploy:gh": "gh-pages -d build"
   },
   "dependencies": {
     "@contentful/forma-36-fcss": "^0.0.35",
