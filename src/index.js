@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import get from 'lodash/get';
+import range from 'lodash/range';
 import toNumber from 'lodash/toNumber';
 import { v4 as uuidv4 } from 'uuid';
 import { TextField, Button, SelectField, Option } from '@contentful/forma-36-react-components';
@@ -19,6 +20,8 @@ const genItem = () => ({
   link: '',
 });
 
+const getInitialValue = () => range(4).map(genItem);
+
 export class App extends React.Component {
   static propTypes = {
     sdk: PropTypes.object.isRequired
@@ -27,9 +30,11 @@ export class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      value: props.sdk.field.getValue() || [],
-    };
+    const sdkValue = props.sdk.field.getValue();
+    const initialValue = getInitialValue();
+    const value = sdkValue.length === 0 ? initialValue : sdkValue;
+
+    this.state = { value };
   }
 
   componentDidMount() {
