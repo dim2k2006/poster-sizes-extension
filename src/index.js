@@ -15,8 +15,8 @@ const parseSize = (size) => size.split('x');
 
 const genItem = () => ({
   id: uuidv4(),
-  width: 0,
-  height: 0,
+  width: 50,
+  height: 70,
   link: '',
 });
 
@@ -32,7 +32,7 @@ export class App extends React.Component {
 
     const sdkValue = props.sdk.field.getValue();
     const initialValue = getInitialValue();
-    const value = sdkValue.length === 0 ? initialValue : sdkValue;
+    const value = sdkValue ? sdkValue : initialValue;
 
     this.state = { value };
   }
