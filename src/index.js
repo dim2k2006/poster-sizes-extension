@@ -67,8 +67,6 @@ const getSize = (orientation, idx) => {
   return size;
 };
 
-const isNew = (value) => value.every((val) => val.link === '');
-
 const options = [
   { orientation: 'portrait', width: 50, height: 70 },
   { orientation: 'portrait', width: 40, height: 50 },
@@ -116,11 +114,7 @@ export class App extends React.Component {
               return { ...value, width: size.width, height: size.height };
             });
 
-        const isNewRecord = isNew(prevState.value);
-
-        const nextValue = isNewRecord ? newValue : prevState.value;
-
-        return { ...prevState, value: nextValue, orientation };
+        return { ...prevState, value: newValue, orientation };
       });
     });
   }
