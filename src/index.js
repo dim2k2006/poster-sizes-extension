@@ -20,7 +20,69 @@ const genItem = () => ({
   link: '',
 });
 
-const getInitialValue = () => range(4).map(genItem);
+const getInitialValue = (length = 4) => range(length).map(genItem);
+
+const initialCount = {
+  landscape: 4,
+  portrait: 4,
+  square: 2,
+};
+
+const getInitialCount = (orientation) => {
+  const count = initialCount[orientation];
+
+  if (!count) throw new Error('Invalid orientation type!');
+
+  return count;
+};
+
+const sizes = {
+  landscape: {
+    0: { width: 70, height: 50 },
+    1: { width: 50, height: 40 },
+    2: { width: 40, height: 30 },
+    3: { width: 30, height: 21 },
+  },
+  portrait: {
+    0: { width: 50, height: 70 },
+    1: { width: 40, height: 50 },
+    2: { width: 30, height: 40 },
+    3: { width: 21, height: 30 },
+  },
+  square: {
+    0: { width: 50, height: 50 },
+    1: { width: 30, height: 30 },
+  },
+}
+
+const getSize = (orientation, idx) => {
+  const sizesMap = sizes[orientation];
+
+  if (!sizesMap) throw new Error('Invalid orientation type!');
+
+  const size = sizesMap[idx];
+
+  if (!size) throw new Error('Invalid size index!');
+
+  return size;
+};
+
+const isNew = (value) => value.every((val) => val.link === '');
+
+const options = [
+  { orientation: 'portrait', width: 50, height: 70 },
+  { orientation: 'portrait', width: 40, height: 50 },
+  { orientation: 'portrait', width: 30, height: 40 },
+  { orientation: 'portrait', width: 21, height: 30 },
+
+  { orientation: 'landscape', width: 70, height: 50 },
+  { orientation: 'landscape', width: 50, height: 40 },
+  { orientation: 'landscape', width: 40, height: 30 },
+  { orientation: 'landscape', width: 30, height: 21 },
+
+  { orientation: 'square', width: 50, height: 50 },
+  { orientation: 'square', width: 30, height: 30 },
+];
 
 export class App extends React.Component {
   static propTypes = {
@@ -33,12 +95,34 @@ export class App extends React.Component {
     const sdkValue = props.sdk.field.getValue();
     const initialValue = getInitialValue();
     const value = sdkValue ? sdkValue : initialValue;
+    const orientation = 'landscape';
 
-    this.state = { value };
+    this.state = { value, orientation };
   }
 
   componentDidMount() {
     this.props.sdk.window.startAutoResizer();
+
+    const orientationField = this.props.sdk.entry.fields.orientation;
+
+    orientationField.onValueChanged((orientation = 'landscape') => {
+      this.setState((prevState) => {
+        const length = getInitialCount(orientation);
+
+        const newValue = getInitialValue(length)
+          .map((value, idx) => {
+              const size = getSize(orientation, idx);
+
+              return { ...value, width: size.width, height: size.height };
+            });
+
+        const isNewRecord = isNew(prevState.value);
+
+        const nextValue = isNewRecord ? newValue : prevState.value;
+
+        return { ...prevState, value: nextValue, orientation };
+      });
+    });
   }
 
   onSave = (value) => this.props.sdk.field.setValue(value);
@@ -102,6 +186,7 @@ export class App extends React.Component {
 
   render() {
     const value = get(this.state, 'value', []);
+    const orientation = get(this.state, 'orientation');
 
     return (
       <div className="App">
@@ -117,15 +202,17 @@ export class App extends React.Component {
                     value={`${item.width}x${item.height}`}
                     onChange={(event) => this.onChangeSize(item.id, event.target.value)}
                   >
-                    <Option value="50x70">50x70</Option>
-                    <Option value="40x50">40x50</Option>
-                    <Option value="30x40">30x40</Option>
-                    <Option value="21x30">21x30</Option>
-                    <Option value="70x50">70x50</Option>
-                    <Option value="50x40">50x40</Option>
-                    <Option value="40x30">40x30</Option>
-                    <Option value="30x21">30x21</Option>
-                    <Option value="30x30">30x30</Option>
+                    {
+                      options
+                        .filter((option) => option.orientation === orientation)
+                        .map((option) => {
+                          const optionValue = `${option.width}x${option.height}`;
+
+                          return (
+                            <Option key={optionValue} value={optionValue}>{optionValue}</Option>
+                          )
+                        })
+                    }
                   </SelectField>
                 </div>
 
