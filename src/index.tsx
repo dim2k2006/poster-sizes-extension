@@ -76,7 +76,7 @@ const sizes: Sizes = {
   },
   square: {
     0: { width: 50, height: 50 },
-    1: { width: 30, height: 30 },
+    1: { width: 23, height: 23 },
   },
 }
 
@@ -108,7 +108,7 @@ const options: OptionType[] = [
   { orientation: 'landscape', width: 30, height: 21 },
 
   { orientation: 'square', width: 50, height: 50 },
-  { orientation: 'square', width: 30, height: 30 },
+  { orientation: 'square', width: 23, height: 23 },
 ];
 
 const defaultOrientation: Orientation = 'portrait';
