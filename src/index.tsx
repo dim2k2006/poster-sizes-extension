@@ -155,14 +155,26 @@ const App: React.FC<AppProps> = ({ sdk }) => {
     onSave(newValue);
   };
 
-  const onChangeSize = (id: string, value: string) => {
-    const size = parseSize(value);
+  const onChangeSize = (id: string, val: string) => {
+    const size = parseSize(val);
 
     const width = toNumber(size[0]);
     const height = toNumber(size[1]);
 
-    onChange(id, 'width', width);
-    onChange(id, 'height', height);
+    const sizes = value.sizes
+      .map((item) => {
+        if (item.id !== id) return item;
+
+        return {
+          ...item,
+          width,
+          height,
+        };
+      });
+
+    const newValue = { sizes, orientation: value.orientation };
+
+    onSave(newValue);
   }
 
   const onAddItem = () => {
