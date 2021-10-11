@@ -75,6 +75,8 @@ const sizes: Sizes = {
     2: { width: 30, height: 40 },
     3: { width: 21, height: 30 },
     4: { width: 10.5, height: 14.8 },
+    5: { width: 38, height: 57 },
+    6: { width: 38, height: 52 },
   },
   square: {
     0: { width: 50, height: 50 },
@@ -101,6 +103,8 @@ interface OptionType extends SizeShape {
 const options: OptionType[] = [
   { orientation: 'portrait', width: 50, height: 70 },
   { orientation: 'portrait', width: 40, height: 50 },
+  { orientation: 'portrait', width: 38, height: 57 },
+  { orientation: 'portrait', width: 38, height: 52 },
   { orientation: 'portrait', width: 30, height: 40 },
   { orientation: 'portrait', width: 21, height: 30 },
   { orientation: 'portrait', width: 10.5, height: 14.8 },
