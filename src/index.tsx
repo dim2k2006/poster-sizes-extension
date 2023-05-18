@@ -69,7 +69,8 @@ const sizes: Sizes = {
     3: { width: 50, height: 40 },
     4: { width: 40, height: 30 },
     5: { width: 30, height: 21 },
-    6: { width: 14.8, height: 10.5 },
+    6: { width: 30, height: 20 },
+    7: { width: 14.8, height: 10.5 },
   },
   portrait: {
     0: { width: 50, height: 70 },
@@ -82,8 +83,7 @@ const sizes: Sizes = {
     7: { width: 38, height: 52 },
     8: { width: 29.7, height: 42 },
     9: { width: 30, height: 130 },
-    10: { width: 20, height: 30 },
-    11: { width: 10, height: 15 },
+    10: { width: 10, height: 15 },
   },
   square: {
     0: { width: 50, height: 50 },
@@ -117,7 +117,6 @@ const options: OptionType[] = [
   { orientation: 'portrait', width: 30, height: 130 },
   { orientation: 'portrait', width: 29.7, height: 42 },
   { orientation: 'portrait', width: 21, height: 30 },
-  { orientation: 'portrait', width: 20, height: 30 },
   { orientation: 'portrait', width: 10.5, height: 14.8 },
   { orientation: 'portrait', width: 10, height: 15 },
 
@@ -128,6 +127,7 @@ const options: OptionType[] = [
   { orientation: 'landscape', width: 40, height: 30 },
   { orientation: 'landscape', width: 30, height: 41 },
   { orientation: 'landscape', width: 30, height: 21 },
+  { orientation: 'landscape', width: 30, height: 20 },
   { orientation: 'landscape', width: 14.8, height: 10.5 },
 
   { orientation: 'square', width: 50, height: 50 },
