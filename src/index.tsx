@@ -113,6 +113,7 @@ const options: OptionType[] = [
   { orientation: 'portrait', width: 38, height: 57 },
   { orientation: 'portrait', width: 38, height: 52 },
   { orientation: 'portrait', width: 30, height: 40 },
+  { orientation: 'portrait', width: 30, height: 41 },
   { orientation: 'portrait', width: 30, height: 130 },
   { orientation: 'portrait', width: 29.7, height: 42 },
   { orientation: 'portrait', width: 21, height: 30 },
