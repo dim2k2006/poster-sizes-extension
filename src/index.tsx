@@ -63,17 +63,18 @@ interface Sizes {
 
 const sizes: Sizes = {
   landscape: {
-    0: { width: 90, height: 61 },
-    1: { width: 80, height: 60 },
-    2: { width: 70, height: 50 },
-    3: { width: 61, height: 43 },
-    4: { width: 50, height: 40 },
-    5: { width: 40, height: 30 },
-    6: { width: 30, height: 21 },
-    7: { width: 30, height: 20 },
-    8: { width: 29.9, height: 20 },
-    9: { width: 15, height: 10 },
-    10: { width: 14.8, height: 10.5 },
+    0: { width: 160, height: 106 },
+    1: { width: 90, height: 61 },
+    2: { width: 80, height: 60 },
+    3: { width: 70, height: 50 },
+    4: { width: 61, height: 43 },
+    5: { width: 50, height: 40 },
+    6: { width: 40, height: 30 },
+    7: { width: 30, height: 21 },
+    8: { width: 30, height: 20 },
+    9: { width: 29.9, height: 20 },
+    10: { width: 15, height: 10 },
+    11: { width: 14.8, height: 10.5 },
   },
   portrait: {
     0: { width: 60, height: 80 },
@@ -125,6 +126,7 @@ const options: OptionType[] = [
   { orientation: 'portrait', width: 10.5, height: 14.8 },
   { orientation: 'portrait', width: 10, height: 15 },
 
+  { orientation: 'landscape', width: 160, height: 106 },
   { orientation: 'landscape', width: 90, height: 61 },
   { orientation: 'landscape', width: 80, height: 60 },
   { orientation: 'landscape', width: 70, height: 50 },
