@@ -73,8 +73,9 @@ const sizes: Sizes = {
     7: { width: 30, height: 21 },
     8: { width: 30, height: 20 },
     9: { width: 29.9, height: 20 },
-    10: { width: 16, height: 11.5 },
-    11: { width: 14.8, height: 10.5 },
+    10: { width: 26, height: 6 },
+    11: { width: 16, height: 11.5 },
+    12: { width: 14.8, height: 10.5 },
   },
   portrait: {
     0: { width: 60, height: 80 },
@@ -143,6 +144,7 @@ const options: OptionType[] = [
   { orientation: 'landscape', width: 30, height: 21 },
   { orientation: 'landscape', width: 30, height: 20 },
   { orientation: 'landscape', width: 29.9, height: 20 },
+  { orientation: 'landscape', width: 26, height: 6 },
   { orientation: 'landscape', width: 16, height: 11.5 },
   { orientation: 'landscape', width: 14.8, height: 10.5 },
 
